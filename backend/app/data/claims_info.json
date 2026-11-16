@@ -1,0 +1,58 @@
+{
+ "general_steps": [
+  "Keep your policy number and the documents for your product ready.",
+  "Intimate the insurer as soon as possible (many policies require intimation within 24 to 48 hours of the event or admission).",
+  "Submit the claim form and documents on the portal, by email or through your insurer's helpline.",
+  "Note your claim number and respond promptly to any queries or document requests.",
+  "Track the status; approved claims are settled to you or directly to the hospital/garage."
+ ],
+ "required_documents": {
+  "Health": [
+   "Duly filled claim form",
+   "Copy of the policy schedule / policy number",
+   "Government photo ID proof",
+   "Discharge summary",
+   "Original hospital bills and payment receipts",
+   "Investigation and diagnostic reports",
+   "Doctor's prescription",
+   "Cancelled cheque (for reimbursement claims)"
+  ],
+  "Life": [
+   "Duly filled claim form",
+   "Copy of the policy schedule / policy number",
+   "Government photo ID proof",
+   "Death certificate",
+   "Claimant's ID and relationship proof",
+   "Nominee's bank details",
+   "Police FIR / post-mortem report (for accidental death)"
+  ],
+  "Motor": [
+   "Duly filled claim form",
+   "Copy of the policy schedule / policy number",
+   "Government photo ID proof",
+   "FIR (where applicable)",
+   "Registration Certificate (RC)",
+   "Driving licence",
+   "Repair estimate and invoices",
+   "Photos of the damage"
+  ],
+  "Home": [
+   "Duly filled claim form",
+   "Copy of the policy schedule / policy number",
+   "Government photo ID proof",
+   "Photos or video of the damage",
+   "Repair estimates / invoices",
+   "List of damaged items with values",
+   "FIR or fire brigade report where applicable"
+  ],
+  "Travel": [
+   "Duly filled claim form",
+   "Copy of the policy schedule / policy number",
+   "Government photo ID proof",
+   "Passport and visa copies",
+   "Travel tickets and itinerary",
+   "Proof of expenses or airline delay certificate",
+   "Medical reports and bills (for medical claims)"
+  ]
+ }
+}

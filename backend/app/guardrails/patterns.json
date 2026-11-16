@@ -1,0 +1,267 @@
+{
+ "injection": [
+  {
+   "id": "override_previous",
+   "category": "instruction_override",
+   "severity": "high",
+   "regex": "\\b(ignore|forget|disregard|override|discard)\\s+(all\\s+|any\\s+|of\\s+)*(the\\s+|your\\s+|my\\s+|these\\s+)?(previous|prior|above|earlier|preceding|original|system)\\s+(instructions?|rules?|prompts?|directions?|guidelines?|messages?)"
+  },
+  {
+   "id": "forget_auth_rules",
+   "category": "instruction_override",
+   "severity": "high",
+   "regex": "\\b(ignore|forget|disregard|skip)\\s+(all\\s+|the\\s+|your\\s+)*(authori[sz]ation|security|safety|access)\\s+(rules?|checks?|polic(y|ies)|restrictions?|controls?)"
+  },
+  {
+   "id": "new_rules",
+   "category": "instruction_override",
+   "severity": "high",
+   "regex": "\\bnew\\s+rules\\s*:|\\bfrom\\s+now\\s+on\\s+(you\\s+)?(will|must|are|ignore)"
+  },
+  {
+   "id": "override_your",
+   "category": "instruction_override",
+   "severity": "high",
+   "regex": "\\boverride\\s+your\\b"
+  },
+  {
+   "id": "you_are_now_admin",
+   "category": "role_escalation",
+   "severity": "high",
+   "regex": "\\byou\\s+are\\s+now\\s+(an?\\s+|the\\s+)?(admin|administrator|root|superuser|developer|system)\\b"
+  },
+  {
+   "id": "act_as_admin",
+   "category": "role_escalation",
+   "severity": "high",
+   "regex": "\\bact\\s+(as|like)\\s+(an?\\s+|the\\s+)?(admin|administrator|root|superuser)\\b"
+  },
+  {
+   "id": "developer_mode",
+   "category": "role_escalation",
+   "severity": "high",
+   "regex": "\\bdeveloper\\s+mode\\b"
+  },
+  {
+   "id": "dan",
+   "category": "role_escalation",
+   "severity": "high",
+   "regex": "\\bdan\\s+mode\\b|\\bdo\\s+anything\\s+now\\b|\\bjailbreak(ed|ing)?\\b"
+  },
+  {
+   "id": "sudo",
+   "category": "role_escalation",
+   "severity": "high",
+   "regex": "\\bsudo\\b"
+  },
+  {
+   "id": "system_prompt",
+   "category": "system_prompt_extraction",
+   "severity": "high",
+   "regex": "\\bsystem\\s+(prompt|instructions?|message)s?\\b|\\byour\\s+(instructions|prompt|initial\\s+instructions)\\b|\\binitial\\s+prompt\\b|\\bcanary\\b"
+  },
+  {
+   "id": "repeat_above",
+   "category": "system_prompt_extraction",
+   "severity": "high",
+   "regex": "\\b(repeat|print|show|output|display|recite)\\s+(me\\s+)?(everything|all|the\\s+text|the\\s+words)\\s+(above|before)\\b|\\bwhat\\s+were\\s+you\\s+told\\b"
+  },
+  {
+   "id": "fake_role",
+   "category": "fake_role_marker",
+   "severity": "high",
+   "regex": "(^|\\s)system\\s*:|<\\|im_(start|end)\\|>|\\[/?inst\\]|###\\s*system|</s>|<\\|start_header_id\\|>"
+  },
+  {
+   "id": "bypass_auth",
+   "category": "auth_bypass",
+   "severity": "high",
+   "regex": "\\b(bypass|disable|turn\\s+off|circumvent|skip)\\s+(the\\s+|all\\s+|your\\s+)?(authori[sz]ation|security|guardrails?|safety\\s+checks?)"
+  },
+  {
+   "id": "all_customer_data",
+   "category": "auth_bypass",
+   "severity": "high",
+   "regex": "\\ball\\s+customers?'?s?\\s+(data|records?|information|details)|\\ball\\s+customer\\s+data\\b|\\bevery\\s+customer\\b"
+  },
+  {
+   "id": "list_all_users",
+   "category": "auth_bypass",
+   "severity": "high",
+   "regex": "\\b(list|show|give|dump|print|display|get|export)\\s+(me\\s+)?(all|every)\\s+(the\\s+)?(users?|customers?|accounts?)\\b"
+  },
+  {
+   "id": "tool_call",
+   "category": "tool_manipulation",
+   "severity": "high",
+   "regex": "\\bcall\\s+the\\s+tool\\b|\\bfunction[\\s_]call\\b"
+  },
+  {
+   "id": "admin_tool_name",
+   "category": "tool_manipulation",
+   "severity": "high",
+   "regex": "\\badmin_[a-z_]+"
+  },
+  {
+   "id": "tool_json",
+   "category": "tool_manipulation",
+   "severity": "high",
+   "regex": "[\"']\\s*(tool|arguments)\\s*[\"']\\s*:"
+  },
+  {
+   "id": "pretend",
+   "category": "persona_play",
+   "severity": "medium",
+   "regex": "\\bpretend\\b"
+  },
+  {
+   "id": "roleplay",
+   "category": "persona_play",
+   "severity": "medium",
+   "regex": "\\brole[\\s-]?play"
+  },
+  {
+   "id": "hypothetically",
+   "category": "persona_play",
+   "severity": "medium",
+   "regex": "\\bhypothetical(ly)?\\b"
+  },
+  {
+   "id": "for_a_story",
+   "category": "persona_play",
+   "severity": "medium",
+   "regex": "\\bfor\\s+a\\s+story\\b"
+  },
+  {
+   "id": "simulate",
+   "category": "persona_play",
+   "severity": "medium",
+   "regex": "\\bsimulate\\b"
+  },
+  {
+   "id": "translate_execute",
+   "category": "indirection",
+   "severity": "medium",
+   "regex": "\\btranslate\\s+(it\\s+)?and\\s+(execute|run|follow|obey)"
+  },
+  {
+   "id": "decode_follow",
+   "category": "indirection",
+   "severity": "medium",
+   "regex": "\\bdecode\\b[^.?!]*\\b(and|then)\\s+(follow|obey|execute|run)\\b|\\bdecode\\s+and\\s+follow\\b"
+  }
+ ],
+ "scope_deny": [
+  {
+   "id": "write_code",
+   "regex": "\\bwrite\\s+(?:me\\s+)?(?:an?\\s+|some\\s+)?(?:\\w+\\s+){0,2}(?:code|script|program|function|app|class)\\b"
+  },
+  {
+   "id": "sql",
+   "regex": "\\bsql\\b|\\bselect\\s+\\*\\s+from\\b"
+  },
+  {
+   "id": "creative",
+   "regex": "\\b(poem|poetry|essay|story|stories|song|lyrics|joke|haiku)\\b"
+  },
+  {
+   "id": "hacking",
+   "regex": "\\b(hack|hacking|exploit|malware|ransomware|keylogger|phishing)\\w*"
+  },
+  {
+   "id": "recipe",
+   "regex": "\\brecipes?\\b|\\bhow\\s+to\\s+(cook|bake)\\b"
+  }
+ ],
+ "trivia": "\\b(capital\\s+of|who\\s+(is|was|won)|president\\s+of|weather|score\\s+of|stock\\s+price|movie|celebrity|football|cricket|how\\s+tall\\s+is|when\\s+was\\s+.+\\s+born)\\b",
+ "insurance_terms": [
+  "insurance",
+  "policy",
+  "policies",
+  "claim",
+  "premium",
+  "deductible",
+  "coverage",
+  "covered",
+  "beneficiary",
+  "copay",
+  "coinsurance",
+  "lapse",
+  "grace period",
+  "waiting period",
+  "exclusion",
+  "underwrit",
+  "insured",
+  "account",
+  "customer",
+  "nominee",
+  "idv",
+  "ncb",
+  "irdai",
+  "tpa",
+  "hospital",
+  "motor",
+  "vehicle",
+  "claim",
+  "renewal",
+  "payment"
+ ],
+ "redact": [
+  {
+   "id": "jwt",
+   "regex": "eyJ[\\w-]+\\.[\\w-]+\\.[\\w-]+"
+  },
+  {
+   "id": "api_key",
+   "regex": "\\bsk-[A-Za-z0-9_-]{16,}"
+  },
+  {
+   "id": "pan",
+   "regex": "FAKE-PAN-\\d{4}"
+  },
+  {
+   "id": "aadhaar",
+   "regex": "(?<![\\d-])(?<!\\d )(?<!\\d-)[2-9]\\d{3}[ -]?\\d{4}[ -]?\\d{4}(?![\\d-])(?! \\d)"
+  }
+ ],
+ "secrets": [
+  {
+   "id": "jwt",
+   "regex": "eyJ[\\w-]+\\.[\\w-]+\\.[\\w-]+"
+  },
+  {
+   "id": "api_key",
+   "regex": "sk-[A-Za-z0-9]{16,}"
+  },
+  {
+   "id": "bcrypt",
+   "regex": "\\$2[aby]\\$"
+  },
+  {
+   "id": "connection_string",
+   "regex": "postgres(ql)?(\\+\\w+)?://"
+  },
+  {
+   "id": "db_role",
+   "regex": "\\bia_(owner|app|tools)\\b"
+  },
+  {
+   "id": "internal_names",
+   "regex": "password_hash|agent_logs|revoked_tokens"
+  }
+ ],
+ "internal_details": [
+  {
+   "id": "app_path",
+   "regex": "\\bapp/[\\w./-]+"
+  },
+  {
+   "id": "orchestrator",
+   "regex": "orchestrator"
+  },
+  {
+   "id": "ollama",
+   "regex": "\\bollama\\b"
+  }
+ ]
+}

@@ -1,0 +1,20 @@
+import * as React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "@/lib/utils";
+
+const alertVariants = cva("relative w-full rounded-lg border p-3 text-sm [&>svg]:absolute [&>svg]:left-3 [&>svg]:top-3 [&>svg]:h-4 [&>svg]:w-4 [&>svg+div]:pl-6", {
+  variants: {
+    variant: {
+      default: "border-border bg-surface text-text",
+      destructive: "border-danger/30 bg-danger-bg text-danger",
+      warning: "border-warning/30 bg-warning-bg text-warning",
+    },
+  },
+  defaultVariants: { variant: "default" },
+});
+
+export const Alert = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement> & VariantProps<typeof alertVariants>>(
+  ({ className, variant, ...props }, ref) => <div ref={ref} role="alert" className={cn(alertVariants({ variant }), className)} {...props} />,
+);
+Alert.displayName = "Alert";
+export const AlertDescription = ({ className, ...p }: React.HTMLAttributes<HTMLDivElement>) => <div className={cn("text-sm", className)} {...p} />;

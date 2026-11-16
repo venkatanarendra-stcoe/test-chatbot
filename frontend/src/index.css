@@ -1,0 +1,116 @@
+@import "@fontsource-variable/inter";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Design tokens. Values are RGB channels so Tailwind opacity modifiers work. */
+@layer base {
+  :root {
+    --background: 246 247 249;
+    --surface: 255 255 255;
+    --surface-muted: 242 244 247;
+    --border: 228 231 236;
+    --text: 16 24 40;
+    --text-secondary: 71 84 103;
+    --text-muted: 102 112 133;
+    --primary: 29 78 216;
+    --primary-hover: 30 64 175;
+    --primary-soft: 239 244 255;
+    --primary-foreground: 255 255 255;
+    --ring: 147 180 255;
+    --overlay: 16 24 40;
+    --brand-from: 29 78 216; --brand-to: 23 37 84; --brand-fg: 255 255 255;
+
+    --success: 6 118 71;   --success-bg: 236 253 243;
+    --warning: 181 71 8;   --warning-bg: 255 250 235;
+    --danger: 180 35 24;   --danger-bg: 254 243 242;
+    --neutral: 52 64 84;   --neutral-bg: 242 244 247;
+    --info: 23 92 211;     --info-bg: 239 248 255;
+
+    --chart-1: 29 78 216; --chart-2: 14 147 132; --chart-3: 247 144 9;
+    --chart-4: 122 90 248; --chart-5: 227 27 84; --chart-6: 102 112 133;
+    --shadow-color: 16 24 40;
+  }
+  .dark {
+    --background: 11 17 32;
+    --surface: 17 24 39;
+    --surface-muted: 26 35 50;
+    --border: 36 48 66;
+    --text: 242 244 247;
+    --text-secondary: 192 199 210;
+    --text-muted: 138 148 166;
+    --primary: 59 130 246;
+    --primary-hover: 96 165 250;
+    --primary-soft: 23 37 84;
+    --primary-foreground: 11 17 32;
+    --ring: 59 130 246;
+    --overlay: 3 7 18;
+    --brand-from: 29 78 216; --brand-to: 23 37 84; --brand-fg: 255 255 255;
+
+    --success: 117 224 167; --success-bg: 5 51 33;
+    --warning: 254 200 75;  --warning-bg: 78 29 9;
+    --danger: 253 162 155;  --danger-bg: 85 22 12;
+    --neutral: 192 199 210; --neutral-bg: 26 35 50;
+    --info: 132 202 255;    --info-bg: 16 42 86;
+
+    --chart-1: 96 165 250; --chart-2: 45 212 191; --chart-3: 251 191 36;
+    --chart-4: 167 139 250; --chart-5: 251 113 133; --chart-6: 148 163 184;
+    --shadow-color: 0 0 0;
+  }
+
+  * { @apply border-border; }
+  html { color-scheme: light; }
+  html.dark { color-scheme: dark; }
+  body {
+    @apply bg-background text-text font-sans text-sm antialiased;
+    line-height: 20px;
+    overflow: hidden;
+    overscroll-behavior: none;
+  }
+  #root { height: 100dvh; }
+  :focus-visible { @apply outline-none ring-2 ring-ring; }
+  ::selection { background: rgb(var(--primary) / 0.2); }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin { scrollbar-width: thin; scrollbar-color: rgb(var(--border)) transparent; }
+  .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+}
+
+/* Markdown inside chat messages */
+.prose-chat { @apply text-sm text-text; line-height: 20px; overflow-wrap: anywhere; }
+.prose-chat > :first-child { @apply mt-0; }
+.prose-chat > :last-child { @apply mb-0; }
+.prose-chat p { @apply my-2; }
+.prose-chat ul { @apply my-2 list-disc pl-5; }
+.prose-chat ol { @apply my-2 list-decimal pl-5; }
+.prose-chat li { @apply my-0.5; }
+.prose-chat strong { @apply font-semibold; }
+.prose-chat a { @apply text-primary underline underline-offset-2; }
+.prose-chat code { @apply rounded bg-surface-muted px-1 py-0.5 font-mono text-xs; }
+.prose-chat pre { @apply my-2 overflow-x-auto rounded-lg bg-surface-muted p-3 font-mono text-xs; }
+.prose-chat h1, .prose-chat h2, .prose-chat h3 { @apply mb-1 mt-3 text-sm font-semibold; }
+.prose-chat table { @apply my-2 w-max min-w-full border-collapse text-xs; }
+.prose-chat th, .prose-chat td { @apply border border-border px-2 py-1.5 text-left align-top; }
+.prose-chat th { @apply bg-surface-muted font-medium; }
+.prose-chat .table-scroll { @apply my-2 overflow-x-auto rounded-lg; }
+
+/* Login brand panel: the only gradient in the app. */
+.brand-panel { background-image: linear-gradient(145deg, rgb(var(--brand-from)), rgb(var(--brand-to))); }
+.dot-grid { background-image: radial-gradient(rgb(var(--brand-fg)) 1px, transparent 1px); background-size: 20px 20px; opacity: 0.08; }
+
+.prose-chat ul ul, .prose-chat ol ul { @apply my-1 list-[circle]; }
+.prose-chat ul ol, .prose-chat ol ol { @apply my-1; }
+.prose-chat li > p { @apply my-0.5; }
+.prose-chat li::marker { @apply text-text-muted; }
+.prose-chat blockquote { @apply my-2 border-l-2 border-border pl-3 text-text-secondary; }
+.prose-chat hr { @apply my-3 border-border; }
+.prose-chat h4, .prose-chat h5 { @apply mb-1 mt-2 text-sm font-medium; }
+.prose-chat del { @apply text-text-muted; }
+.prose-chat input[type="checkbox"] { @apply mr-1.5 align-middle; }
+.prose-chat td, .prose-chat th { @apply whitespace-nowrap; }
+.prose-chat td { white-space: normal; min-width: 5rem; }
+.prose-chat pre code { @apply bg-transparent p-0; }
